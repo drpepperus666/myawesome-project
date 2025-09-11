@@ -84,3 +84,24 @@ if (phoneInput) {
         this.value = formattedInputValue;
     });
 }
+
+(function() {
+    const KEY = 'theme';
+    const btn = document.querySelector('.theme-toggle');
+    
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem(KEY);
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('theme-dark');
+        if (btn) btn.setAttribute('aria-pressed', 'true');
+    }
+
+    if (btn) {
+        btn.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('theme-dark');
+            btn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+        });
+    }
+})();

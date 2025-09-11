@@ -5,45 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
     <title>О нас - Название вашего сайта</title>
     <meta name="description" content="Узнайте больше о нашей компании и истории">
 </head>
 <body>
-    <header>
-        <a href="/" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="src/logo.jpg" alt="Логотип" width="40" height="40" style="margin-right: 10px;">
+    <header class="site-header">
+        <a href="/" class="site-header__brand">
+            <img src="src/logo.jpg" alt="Логотип" width="40" height="40">
             <span>Название сайта</span>
         </a>
-
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+        <div class="site-header__actions">
+            <button class="theme-toggle" type="button" aria-pressed="false" title="Переключить тему (светлая/тёмная)"></button>
+        </div>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li><a class="site-nav__link" href="about.html" aria-current="page">О нас</a></li>
+                <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
     </header>
     
-    <main>
-        <nav aria-label="Хлебные крошки">
+    <main class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a href="index.html">Главная</a> →
             <span>О нас</span>
         </nav>
         
         <h1>О нашей компании</h1>
         
-        <section>
+        <section class="section">
             <h2>Наша история</h2>
             <p>Текст о том, как все начиналось...</p>
+            <p>Мы основали компанию в 2020 году с целью...</p>
         </section>
         
-        <section>
+        <section class="section">
             <h2>Наша команда</h2>
             <p>Текст о команде...</p>
+            <div class="team-card">
+                <img class="team-card__img" src="src/team-member-1.jpg" alt="Фото сотрудника">
+                <h3>Аноним Анонимов</h3>
+                <p>Должность: Руководитель проекта</p>
+            </div>
+            <div class="team-card">
+                <img class="team-card__img" src="src/team-member-2.jpg" alt="Фото сотрудника">
+                <h3>Ноунейм Ноунеймов</h3>
+                <p>Должность: Дизайнер</p>
+            </div>
         </section>
     </main>
     
-    <footer>
+    <footer class="site-footer">
         <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
         <p>Телефон: +6 (666) 456-78-90</p>
     </footer>

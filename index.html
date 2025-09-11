@@ -10,79 +10,104 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <header>
-        <a href="/" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="src/logo.jpg" alt="Логотип" width="40" height="40" style="margin-right: 10px;">
+    <header class="site-header">
+        <a href="/" class="site-header__brand">
+            <img src="src/logo.jpg" alt="Логотип" width="40" height="40">
             <span>Название сайта</span>
         </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+        <div class="site-header__actions">
+            <button class="theme-toggle" type="button" aria-pressed="false" title="Переключить тему (светлая/тёмная)"></button>
+        </div>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a class="site-nav__link" href="index.html" aria-current="page">Главная</a></li>
+                <li><a class="site-nav__link" href="about.html">О нас</a></li>
+                <li><a class="site-nav__link" href="contacts.html">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
+    <main class="container">
+        <section class="hero">
+            <h1 class="hero__title">Добро пожаловать на наш сайт!</h1>
+            <p>Мы создаем лучшие решения для наших клиентов.</p>
+        </section>
         
-        <section id="services">
+        <section id="services" class="section">
             <h2>Наши услуги</h2>
             <p>Описание предоставляемых услуг...</p>
-            <button id="openDialog" type="button" class="btn-primary">Написать нам</button>
+            <button id="openDialog" type="button" class="btn btn--primary">Написать нам</button>
         </section>
 
-        <section id="portfolio">
+        <section id="portfolio" class="section">
             <h2>Портфолио</h2>
             <p>Примеры наших работ...</p>
         </section>
 
-        <section id="contacts">
+        <section id="contacts" class="section">
             <h2>Контактная информация</h2>
             <p>Наши контакты...</p>
-            <a href="contacts.html">Подробнее</a>
+            <a href="contacts.html" class="btn btn--secondary">Подробнее</a>
+        </section>
+
+        <section class="section">
+            <h2>Посмотрите наше видео</h2>
+            <div class="media">
+                 <iframe width="720" height="405" src="https://rutube.ru/play/embed/07c9406e5169aed60bc7f8ff30729d5f/" style="border: none;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
         </section>
     </main>
 
-    <dialog id="contactDialog" aria-labelledby="dialogTitle">
+    <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
         <h2 id="dialogTitle">Обратная связь</h2>
         
-        <form id="contactForm" method="dialog" novalidate>
-            <label for="name">Имя*</label>
-            <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
+        <form id="contactForm" class="form" method="dialog" novalidate>
+            <div class="form__group">
+                <label for="name" class="form__label">Имя*</label>
+                <input id="name" name="name" type="text" class="form__input" required minlength="2" autocomplete="given-name">
+            </div>
 
-            <label for="email">E-mail*</label>
-            <input id="email" name="email" type="email" required autocomplete="email">
+            <div class="form__group">
+                <label for="email" class="form__label">E-mail*</label>
+                <input id="email" name="email" type="email" class="form__input" required autocomplete="email">
+            </div>
 
-            <label for="phone">Телефон*</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" 
-                   aria-describedby="phoneHelp" placeholder="+7 (666) 666-66-66" 
-                   required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
-            <small id="phoneHelp">Формат: +7 (666) 666-66-66</small>
+            <div class="form__group">
+                <label for="phone" class="form__label">Телефон*</label>
+                <input id="phone" name="phone" type="tel" class="form__input" inputmode="tel" autocomplete="tel" 
+                       aria-describedby="phoneHelp" placeholder="+7 (666) 666-66-66" 
+                       required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
+                <small id="phoneHelp" class="form__help">Формат: +7 (666) 666-66-66</small>
+            </div>
 
-            <label for="date">Дата</label>
-            <input id="date" name="date" type="date">
+            <div class="form__group">
+                <label for="date" class="form__label">Дата</label>
+                <input id="date" name="date" type="date" class="form__input">
+            </div>
 
-            <label for="topic">Тема*</label>
-            <select id="topic" name="topic" required>
-                <option value="">-- Выберите тему --</option>
-                <option value="question">Вопрос</option>
-                <option value="order">Заказ</option>
-                <option value="feedback">Отзыв</option>
-            </select>
+            <div class="form__group">
+                <label for="topic" class="form__label">Тема*</label>
+                <select id="topic" name="topic" class="form__select" required>
+                    <option value="">-- Выберите тему --</option>
+                    <option value="question">Вопрос</option>
+                    <option value="order">Заказ</option>
+                    <option value="feedback">Отзыв</option>
+                </select>
+            </div>
 
-            <label for="message">Сообщение*</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <div class="form__group">
+                <label for="message" class="form__label">Сообщение*</label>
+                <textarea id="message" name="message" class="form__textarea" rows="4" required></textarea>
+            </div>
 
-            <div class="form-actions">
-                <button type="button" id="closeDialog" class="btn-secondary">Закрыть</button>
-                <button type="submit" class="btn-primary">Отправить</button>
+            <div class="form__actions">
+                <button type="button" id="closeDialog" class="btn btn--secondary">Закрыть</button>
+                <button type="submit" class="btn btn--primary">Отправить</button>
             </div>
         </form>
     </dialog>
 
-    <footer>
+    <footer class="site-footer">
         <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
         <p>Телефон: +6 (666) 666-66-66</p>
     </footer>
